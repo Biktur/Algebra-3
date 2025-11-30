@@ -1,0 +1,256 @@
+\documentclass[russian]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[russian, english]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{tikz-cd}
+
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{Im}
+\newcommand{\OK}{\mathcal{O}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+
+\title{Решение задач к экзамену по алгебре}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Задача 1}
+
+Пусть $F \subset K \subset L$. Если $L/F$ алгебраическое, то и $L/K$, и $K/F$ алгебраические (сразу следует из определения). В обратную сторону, пусть $\alpha \in L$. Пусть $f = x^n + a_{n - 1}x^{n - 1} + \dotso + a_0$ --- минимальный многочлен $\alpha$ над $K$, тогда $F(a_0, a_1, \dotsc, a_{n - 1}, \alpha)$ --- конечное, а значит $\alpha$ алгебраический над $F$. Второе условие, очевидно, верно, т. к. если элемент алгебраический над $F$, он алгебраический и над любым расширением.
+
+\section*{Задача 2}
+
+Докажем по индукции, $n = 1$ --- очевидно. Пусть $x^2 - a_n$ имеет корень над $\Q(\sqrt{a_1}, \sqrt{a_2}, \dotso, a_{n - 1})$, т. е.$(a + b\sqrt{a_{n - 1}})^2 = a_n$, где $a, b \in \Q(\sqrt{a_1}, \sqrt{a_2}, \dotso, \sqrt{a_{n - 2}})$, т. е. $a^2 + a_{n - 1}b^2 + 2ab\sqrt{a_{n  -1}} = a_n$, в частности $ab = 0$, если $a = 0$, противоречие, иначе --- $b^2 = \frac{a_na_{n - 1}}{a_{n - 1}^2}$. Противоречие, ведь $\{\sqrt{a_1}, \sqrt{a_2}, \dotso, \sqrt{a_{n - 2}}, \frac{\sqrt{a_na_{n - 1}}}{a_{n - 1}}\}$ тоже удовлетворяет условию.
+
+\section*{Задача 3}
+
+Очевидно из мультипликативности степени расширений. 
+
+\section*{Задача 4}
+
+Пусть $\alpha = a + b\sqrt{-3} \in \OK_K$, где $a, b \in \Q$, тогда, в частности, $N_{K/\Q}(\alpha) \in \Z$, и $\Tr_{K/\Q}(\alpha) \in \Z$, т. е. $2a \in \Z$, и $a^2 + 3b^2 \in \Z$, а значит $2a$ и $2b$ --- целые одной четности. Но $\alpha$ --- корень многочлена $x^2 - \Tr_{K/\Q}(\alpha)x + N_{K/\Q}(\alpha)$, т. е. условие достаточно.
+
+\section*{Задача 5}
+
+Пусть $F = \mathbb{F}_p(x^p)$, $L = \mathbb{F}_p(x)$. $\Tr_{L/K}(1) = [L : F] = p = 0$. Минимальный многочлен $x^k$ для $p \nmid k$ равен $t^p - x^{pk}$, из совпадения степеней, он равен характеристическому, т. е., в частности, $\Tr_{L/K}(x^k) = 0$ для $k = 0, 1, \dotso, p - 1$, но это базис, а значит $\Tr_{L/K} = 0$.
+
+\section*{Задача 6}
+
+$\Tr(\theta) = 0$. Характеристический $\theta^{-1}$ равен $t^3 + \frac{a}{b}t^2 + \frac{1}{b}$ ($b \neq 0$ из неприводимости). Т. е. $\Tr(\theta^{-1}) = -\frac{a}{b}$. $\Tr(\theta^2) =-a\Tr(1) -b\Tr(\theta^{-1}) = -2a$, аналогично $\Tr(\theta^3) = -3b$, $\Tr(\theta^4) = 2a^2$.
+
+\begin{equation*}
+\disc\{1, \theta, \theta^2\} = \det
+\begin{pmatrix}
+3 & 0 & -2a\\
+0 & -2a & -3b\\
+-2a & -3b & 2a^2
+\end{pmatrix}
+= -12a^3 - 27b^2 + 8a^3 = -4a^3 - 27b^2
+\end{equation*}
+
+Альтернативное доказательство:
+
+\begin{equation*}
+\det
+\begin{pmatrix}
+\Tr(1) & \Tr(\theta) & \Tr(\theta^2)\\
+\Tr(\theta) & \Tr(\theta^2) & \Tr(\theta^3)\\
+\Tr(\theta^2) & \Tr(\theta^3) & \Tr(\theta^4)
+\end{pmatrix}
+=\det\left(
+\begin{pmatrix}
+1 & 1 & 1\\
+\theta & \theta' & \theta''\\
+\theta^2 & \theta'^2 & \theta''^2
+\end{pmatrix}
+\begin{pmatrix}
+1 & \theta & \theta^2\\
+1 & \theta' & \theta'^2\\
+1 & \theta'' & \theta''^2
+\end{pmatrix}
+\right)=
+\end{equation*}
+
+\begin{equation*}`
+=\det\left(
+\begin{pmatrix}
+1 & 1 & 1\\
+\theta & \theta' & \theta''\\
+\theta^2 & \theta'^2 & \theta''^2
+\end{pmatrix}
+\right)^2
+\end{equation*}
+
+Т. е. искомый дискриминант --- дискриминант в многочлена в стандартном смысле.
+
+\section*{Задача 7}
+
+$1) \implies 2)$ Пусть $f$ --- минимальный многочлен $\alpha$ над $F$. Пусть $F \subset L \subset F$ и $g$ --- минимальный многочлен $\alpha$ над $L$, тогда $g \mid f$, причём, из факториальности кольца многочленов, таких $g$ конечной число($g$ должен быть унитальным), при этом $g$ однозначно определяет $L$. Действительно, $L$ --- минимальное поле, содержащее коэффициенты $g$, из совпадения степеней расширений и вложеннности последнего в $L$.
+
+$2) \implies 1)$ Считаем $F$ бесконечным, для конечных полей утверждение очевидно из цикличности мультипликативной группы. Пусть $K = F(\alpha_1, \alpha_2, \dotso, \alpha_n)$. Достаточно доказать утверждение для $n = 2$. Действительно, для $n \geq 3$ можно рассмотреть $F' = F(\alpha_3, \alpha_4, \dotso, \alpha_{n})$ и воспользоваться индукцией. $K = F(\alpha, \beta)$. Рассмотрим промежуточные поля вида $F(\alpha + c\beta)$, где $c \in F$. Из условия, для каких-то $c_1, c_2 \in K$ $F(\alpha + c_1\beta) = (\alpha + c_2\beta)$, а значит это расширение содержит $\alpha$ и $\beta$, т. е. $F(\alpha + c_1\beta) = K$.
+
+\section*{Задача 8}
+
+Пусть $\alpha = \sqrt[k]{\frac{b_i}{b_j}}$, $i \neq j$, $d = [\Q(\alpha) : \Q]$, r --- наименьшее число, т. ч. $\alpha^r \in \Q$. Пусть $x^r = c$. Тогда $N_{\Q(\alpha) / Q}(\alpha)^r = N_{\Q(\alpha) / Q}(c) = c^d$, значит $c = q^\frac{r}{gcd(r, d)}$, где $q \in \Q$, т. е. $x^{gcd(r, d)} \in \Q$, а значит $d = r$. $\Tr_{K / \Q}(\alpha) = s\Tr_{\Q(\alpha) / \Q}(\alpha) = 0$ т. к. минимальный многочлен $\alpha$ --- $x^r - c$. Деля равенство из условия на $\sqrt[k]{b_i}$ и применяя след, получаем $a_i = 0$.
+
+
+
+\section*{Задача 9}
+
+Многочлен $\Phi(x) = x^{p - 1} + x^{p - 2} + \dotso + 1$ неразложим по критерию Эйзенштейна. Действительно, $\Phi(x + 1) = \frac{(x + 1)^p - 1}{x + 1 - 1} = x^{p - 1} (\mathrm{mod} \, p)$, при этом $\Phi(x + 1) = x^{p - 1} + \dotso + p$. Значит $\{1, \xi, \dotsc, \xi^{p - 2}\}$ --- базис.  $\Tr(\xi^k) = -1$, при $p \nmid k$; $p - 1$ --- иначе. Итого:
+
+\begin{equation*}
+	\disc\{1, \xi, \dotsc, \xi^{p - 2}\} = \det
+\begin{pmatrix}
+p - 1 & -1 & -1 & \dotso & -1\\
+-1 & -1 & -1 & \dotso & -1\\
+-1 & -1 & -1 & \dotso & p - 1\\
+\dotso & \dotso & \dotso & \dotso & \dotso\\
+-1 & -1 & p - 1 & \dotso & -1\\
+\end{pmatrix}
+=
+\end{equation*}
+
+\begin{equation*}
+= \det
+\begin{pmatrix}
+1 & 1 - p & 1 & \dotso & 1\\
+-1 & -1 & -1 & \dotso & -1\\
+-1 & -1 & -1 & \dotso & p - 1\\
+\dotso & \dotso & \dotso & \dotso & \dotso\\
+-1 & -1 & p - 1 & \dotso & -1\\
+\end{pmatrix}
+= \det
+\begin{pmatrix}
+1 & 1 - p & 1 & \dotso & 1\\
+0 & -p & 0 & \dotso & 0\\
+0 & -p & 0 & \dotso & p\\
+\dotso & \dotso & \dotso & \dotso & \dotso\\
+0 & -p & p & \dotso & 0\\
+\end{pmatrix}
+=
+\end{equation*}
+
+\begin{equation*}
+= (-1)^\frac{p - 1}{2} p^{p - 2}
+\end{equation*}
+
+Алтернативное доказательство:
+
+$$\disc\{1, \xi, \dotsc, \xi^{p - 2}\} = \disc_\Phi = \frac{\disc_{x^p - 1}}{\Phi(1)^2} = (-1)^{\frac{p(p - 1)}{2}}\frac{\Res(x^p - 1, px^{p - 1})}{p^2} =$$
+$$= (-1)^\frac{p - 1}{2}p^{p - 2}(-1)^{p - 1} = (-1)^\frac{p - 1}{2}p^{p - 2}$$
+
+\section*{Задача 10}
+
+Пусть $\{\sigma_i\}$ --- различные вложения $K$ над $F$ в алгебраическое замыкание $L$, продолженные на алгебраическое замыкание, $\{\tau_j\}$ --- различные вложения $L$ над $K$. Тогда любое вложение $L$ над $F$ представляется единственным образом в виде $\sigma_i \tau_j$, т. к. если $\sigma$ --- вложение, найдётся $i$, т. ч. $F$ неподвижно относительно $\sigma_i^{-1}\sigma$. Значит $\sigma_i^{-1} \sigma$ = $\tau_j$ на $L$ для какого-то $j$. Отсюда утверждение задачи получается группировкой членов суммы или произведения.
+
+\section*{Задача 11}
+
+Из одной из предыдущих задач мы знаем, что степень расширения --- $2^n$, вложения переворачивают знак у произвольного подмножества порождающих. Действительно, добавляем корни по одному, на каждом шаге продолжаем вложение, либо переворачивая знак, либо оставляя. Эти вложения, очевидно различны и на сумме, т. к. порождающие линейно независимы, а значит степень расширения хотя бы $2^n$. Отсюда расширения совпадают.
+
+\section*{Задача 12}
+
+Пусть $F = \F_q$, $L = \F_{q^n}$, $L/F$ --- нормальное и сепарабельное, как разбивающее расширение многочлена $x^{q^n} - x$, не имеющего кратных корней (его производная равна $-1$), утверждается, что $\sigma(x) = x^q$ порождает группу Галуа. Действительно, $\sigma$ --- автоморфизм c периодом $n$, пусть его порядок равен $d$, тогда $X^{p^d} - X = 0$ для любого элемента $L$, следовательно, $d = n$.
+
+Пусть $\zeta$ порождает мультипликативную группу $L$. $N(\zeta) = \zeta^{1 + p + \dotso + p^{n - 1}} = \zeta^{\frac{p^n - 1}{p - 1}} \in F$, т. е. порядок образа $\zeta$ равен $p - 1$. Значит он порождает мультипликативную группу F.
+
+\section*{Задача 13}
+
+Минимальный, очевидно, делит $f(x) = \Phi_p(x^{p^{n - 1}})$, но степень минимального равна $\varphi(p^n) = p^{n - 1}(p - 1)$, значит $f = \Phi_{p^n}$.
+
+\section*{Задача 14}
+
+$S_n$ - очевидно, разрешима, при $n < 4$. При $n = 4$ $\{id\} \subset V_4 \subset A_{4} \subset S_{4}$ --- искомая цепь. Пусть $n > 4$, тогда $[A_n, A_n] = A_n$. Действительно, $[(mik), (klj)] = (kim)(jlk)(mik)(klj) = (ijk)$, где все индексы различны. Но 3--циклы порождают $A_n$.
+
+\section*{Задача 15}
+
+Пусть $x^2 + bx + a^2$ --- минимальный многочлен $\beta$. Будем искать $c, d \in F$, т. ч. $c(\beta + d)^2 = \beta$. $c(-b\beta + 2\beta d - a^2 + d^2) = \beta$, т. е. $2cd - cb = 1$ и $a^2 = d^2$. Т. к. $a \neq 0$, и $\chr F \neq 2$, $2a - b$ или $-2a - b$ не равно $0$. Итого $\beta = \frac{1}{-b + 2a}(\beta + a)^2$, или $\beta = \frac{1}{-b - 2a}(\beta - a)^2$, в зависимости от того, какой из знаменателей не равен $0$.
+
+\section*{Задача 16}
+
+Расширение сепарабельно, т. к. $\chr F \neq 2, 3$, и нормально, по определению.  Будем рассматривать действие группы Галуа на корнях f, т. е. вложение в $S_3$, т. к. образ корней однозначно задаёт автоморфизм. Если $\disc{F} \in (F^*)^2$, $(x_1 - x_2)(x_1 - x_3)(x_2 - x_3)$ неподвижен относительно всех атвоморфизмов, значит автоморфизмы допускают только чётные перестановки корней, при этом $3 \mid |G|$, значит $G = A_3$. Пусть теперь $G = A_3$, тогда G действует на корнях как $A_3$, т. к. $2 \nmid |G|$, значит элемент $(x_1 - x_2)(x_1 - x_3)(x_2 - x_3) \in F_f$ неподвижен, значит лежит в $F$.
+
+\section*{Задача 17}
+
+Пусть $L / K$ --- циклическое расширение Галуа, $\sigma$ --- образующая, $\theta  = \sqrt{x + y\sqrt{a}}$. Тогда $\sigma^2|_{K(\sqrt{a})} = id$, значит $\sigma^2(\theta) = -\theta$, при этом $\sigma(\theta) = \sqrt{x - y\sqrt{a}}$. Действительно, применим $\sigma$ к равенству $\theta^2 = x + y\sqrt{a}$. Пусть $\alpha = \theta \sigma(\theta)$, тогда $\sigma(\alpha) = -\alpha$, в частности $\sigma^2(\alpha) = \alpha$, т. е. $\alpha \in K(\sqrt{a})$, значит $\alpha = z\sqrt{a}$, итого $\alpha^2 = x^2 - ay^2 = az^2$. В обратную сторону рассуждение полностью аналогично.
+
+\section*{Задача 18}
+
+Пусть $H = Gal(F / K_1K_2)$, тогда, очевидно, $H = H_1 \cap H_2$, при этом $K_1K_2 = F^H$. Пусть теперь $H' = Gal(F /(K_1 \cap K_2))$, тогда $H_1, H_2 \subset H'$, но $K^{H_1 H_2} \subset K^{H_1} \cap K^{H_2} = K_1 \cap K_2$, т. е. $H' \subset H_1 H_2$, а значит $H' = H_1 H_2$, по определению.
+
+\section*{Задача 19}
+
+Рассмотрим действие $G = S_n$ на корнях, т. е. вложение $G \hookrightarrow \mathrm{Perm}\{x_1, x_2, \dotsc, x_n\}$. Тогда образ $A_n$ --- нечётные перестановки корней. Действительно, при $n \geq 5$, $[S_n, S_n] = A_n$, при $n < 5$, 3-циклы переходят в 3-циклы и порождают $A_n$. Тогда $L^{A_n} = K(\sqrt{\Delta})$, где $\Delta$ --- дискриминант $f$. Действительно, $\sqrt{\Delta}$ неподвижен относительно чётных перестановок корней и меняет знак под действием нечётных, при этом $[L^{A_n} : K] = 2$.
+
+\section*{Задача 20}
+
+Рассмотрим многочлен $f(x) = x^4 - x + 1$. Он неприводим, т. к. у него нет корней и $x^4 - x + 1 = (x + 1)(x^3 - x^2 + x + 1) \mod 3$, где последний неприводим по модулю 3, т. к. у него нет корней. Рассмотрим кубическую резольвенту $f$, $g(x) = x^3 - 4x + 1$. $g(x)$ неразложим, т. к. не имеет корней. При этом дискриминант $g$ равен дискриминанту $f$, значит $\disc_f = 256 - 27 = 229 \neq n^2$. Итого, $12 \mid |G|$ и $G \neq A_4$, но $|G| \neq 12$. Действительно, ведь тогда подргуппа чётных перестановок $G$ имеет порядок 6 и её действие на множестве из 4-х элементов разбивает его на 2 орбиты из 2 элементов, но в этой подгруппе есть элемент порядка 3. Противоречие. Отсюда, $G = S_4$.
+
+\section*{Задача 21}
+
+$$g(x) = (x - (x_1 + x_2)(x_3 + x_4))(x - (x_1 + x_3)(x_2 + x_4))(x - (x_1 + x_4)(x_2 + x_3)) = x^3 -$$
+$$-2\sigma_2 x^2 + (\sigma_{02} + 3\sigma_{21} + 6\sigma_4)x - (\sigma_{111} + 2\sigma_{301} + 2\sigma_{03} + 4\sigma_{22}) = x^3 - 2\sigma_2 x^2 +$$
+$$+(\sigma_2^2 + \sigma_{21})x - (\sigma_3 \sigma_2 \sigma_1 - \sigma_{301} - \sigma_{03} - 4\sigma_{22}) = x^3 - 2\sigma_2 x^2 + (\sigma_2^2 + \sigma_3\sigma_1 - 4\sigma_4)x -$$
+$$-(\sigma_3 \sigma_2 \sigma_1 - \sigma_4(\sigma_1^2 - 2\sigma_2) - (\sigma_3^2 - 2\sigma_4\sigma_2) - 4\sigma_2\sigma_2) = x^3 - 2\sigma_2 x^2 + (\sigma_2^2 + \sigma_3\sigma_1 - 4\sigma_4)x +$$
+$$+\sigma_4\sigma_1^2 + \sigma_3^2 - \sigma_3 \sigma_2 \sigma_1$$
+
+\section*{Задача 22}
+
+Минимальный многочлен $\sigma$ равен $x^n - 1$, т. к. $1, \sigma, \sigma^2, \dotsc, \sigma^{n - 1}$ линейно независимы, как попарно различные характеры. Рассмотрим гомоморфизм $\varphi: K[x] \rightarrow \End_K(L)$, т. ч. $\varphi(x) = \sigma$. Ядро $\varphi$ нетривиально, т. к. $\End_K(L)$ конечномерно над $K$. Из структурной теоремы,
+
+$$L \simeq \bigoplus_{i = 1}^m K[x]/(f_i),$$
+
+где $f_i \mid f_{i + 1}$. Тогда $f_m$ --- минимальный многочлен, по определению. Но $\dim_K K[x]/(x^n-1) = n$, значит $L \simeq K[x]/(x^n-1)$. Тогда найдётся $u$, т. ч. $u, \sigma u, \sigma^2 u, \dotsc, \sigma^{n - 1} u$ --- базис $L$ над $K$.
+
+\section*{Задача 23}
+
+$G$ --- конечнопорождённая абелева, из структурной теоремы
+
+$$G \simeq \Z^r \oplus (\bigoplus_{i = 1}^n \Z/q_i\Z)$$
+
+Рассмотрим $k[x, y] := k[x_1, x_1^{-1}, x_2, x_2^{-1}, \dotsc, x_r, x_r^{-1}, y_1, y_2, \dotsc, y_n]$. Пусть $I = (y_1^{q_1} - 1, y_2^{q_2} - 1, \dotsc, y_n^{q_n} - 1)$. Пусть теперь $\varphi: k[x, y] \rightarrow G$, т. ч. $p_j(\varphi(x_i)) = \delta_{ij}$, $p_{j + r}(\varphi(y_i)) = \delta_{ij}$, тогда $I \subset \ker \varphi$, значит определено $\psi: k[x, y]/I \rightarrow G$. $\psi$, очевидно, изоморфизм, т. к. переводит разные мономы в разные.
+
+\section*{Задача 24}
+
+Пусть $\pi_1$ и $\pi_2$ --- соответствующие проекции, $i_1$ и $i_2$ --- соответствующие вложения. Тогда $\pi_1 \circ i_1 = id$, $\pi_2 \circ i_2 = id$, $\pi_2 \circ i_1 = 0$, $\pi_1 \circ i_2 = 0$ и $i_1 \circ \pi_1 + i_2 \circ \pi_2 = id$. Все эти равенства сохраняются при применении тензорного произведения. Отсюда $(M \oplus N) \otimes P$ ---  прямая сумма $M \otimes P$ и $N \otimes P$.
+
+\section*{Задача 25}
+
+$(f, w) \mapsto (v \mapsto f(v)w)$, очевидно, билинейно, значит определено $\varphi: f \otimes w \mapsto (v \mapsto f(v)w)$. Пусть $\{v_1, v_2, \dotsc, v_n\}$ --- базис $V$, $\{w_1, w_2, \dotsc, w_m\}$ --- $W$, тогда $\{v^i \otimes w_j\}_{i, j}$ --- базис $V^* \otimes W$. Пусть $u = \sum_{i, j}a_{ij}v^i \otimes w_j \in \ker \varphi$. Тогда $0 = \varphi(u)(v_i) = \sum_j a_{ij}w_j$, по определению двойственного базиса. Тогда все $a_{ij} = 0$. Пусть теперь $f \in \Hom(V, W)$, тогда $f = \varphi(\sum_i e^i \otimes f(e_i))$. Итого, $\phi$ --- изоморфизм.
+
+\section*{Задача 25}
+
+\begin{equation*}
+\begin{tikzcd}
+& M' \arrow{r}{f} \arrow{d}{d'} & M \arrow{r}{g} \arrow{d}{d} & M'' \arrow{r} \arrow{d}{d''} & 0 \\
+0 \arrow{r} & N' \arrow{r}{f} & N \arrow{r}{g} & N''
+\end{tikzcd}
+\end{equation*}
+
+Утверждается, что $\delta: \ker d'' \rightarrow \coker d'$, т. ч. $\delta = f^{-1} \circ d \circ g^{-1}$ корректно определён и последовательность
+\begin{equation*}
+\begin{tikzcd}
+	\ker d' \arrow{r} & \ker d \arrow{r}{g^*} & \ker d'' \arrow{r}{\delta} & \coker d' \arrow{r}{f^*} & \coker d \arrow{r} & \coker d''
+\end{tikzcd}
+\end{equation*}
+точна. Действительно, $f^{-1} \circ d \circ g^{-1}m'' = f^{-1} \circ d(m + \ker g) = f^{-1} \circ d(m + \im f) = f^{-1}(n + \im d \circ f) = f^{-1}(n + \im f \circ d') = n' + \im d'$. Здесь $f^{-1}(n)$ определено, т. к. $g(n) = 0$ из коммутативности диаграммы. Точность в $\ker d$ и $\coker d$ очевидна. Докажем точность в $\ker d''$. Вложение $\im g^* \subseteq \ker \delta$ сразу следует из инъективности $f: N' \rightarrow N$ и определения $\delta$. Пусть теперь $m''$ оказался в ядре, тогда $n' = d'x$. Отсюда $d(f(x) - m) = d \circ f x - n = f \circ d' x - n = 0$, но $g(f(x) - m) = m''$, значит $m'' \in g^*$. Проверим точность в $\coker d'$. Вложение $\im \delta \subseteq \ker f^*$ очевидно из определения $\delta$. Пусть теперь $f(n') = d(x)$, тогда $n' - \delta \circ g x \in \im d'$ из инъективности $f: N' \rightarrow N$. Итого, получаем диаграмму
+
+\begin{equation*}
+\begin{tikzcd}
+	& \ker d' \arrow{r} \arrow{d} & \ker d \arrow{r} \arrow{d} \arrow[phantom]{ddd}[coordinate, name=Z, anchor=center]{} & \ker d'' \arrow{d} \arrow[dddll, rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (Z) -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}] \\
+& M' \arrow{r} \arrow{d} & M \arrow{r} \arrow{d} & M'' \arrow{r} \arrow{d} & 0 \\
+0 \arrow{r} & N' \arrow{r} \arrow{d} & N \arrow{r} \arrow{d} & N'' \arrow{d} \\
+& \coker d' \arrow{r} & \coker d \arrow{r} & \coker d''
+\end{tikzcd}
+\end{equation*}
+
+\end{document}
