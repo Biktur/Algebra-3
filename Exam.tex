@@ -227,7 +227,7 @@ $$G \simeq \Z^r \oplus (\bigoplus_{i = 1}^n \Z/q_i\Z)$$
 
 $(f, w) \mapsto (v \mapsto f(v)w)$, очевидно, билинейно, значит определено $\varphi: f \otimes w \mapsto (v \mapsto f(v)w)$. Пусть $\{v_1, v_2, \dotsc, v_n\}$ --- базис $V$, $\{w_1, w_2, \dotsc, w_m\}$ --- $W$, тогда $\{v^i \otimes w_j\}_{i, j}$ --- базис $V^* \otimes W$. Пусть $u = \sum_{i, j}a_{ij}v^i \otimes w_j \in \ker \varphi$. Тогда $0 = \varphi(u)(v_i) = \sum_j a_{ij}w_j$, по определению двойственного базиса. Тогда все $a_{ij} = 0$. Пусть теперь $f \in \Hom(V, W)$, тогда $f = \varphi(\sum_i e^i \otimes f(e_i))$. Итого, $\phi$ --- изоморфизм.
 
-\section*{Задача 25}
+\section*{Задача 26}
 
 \begin{equation*}
 \begin{tikzcd}
@@ -252,5 +252,34 @@ $(f, w) \mapsto (v \mapsto f(v)w)$, очевидно, билинейно, зна
 & \coker d' \arrow{r} & \coker d \arrow{r} & \coker d''
 \end{tikzcd}
 \end{equation*}
+
+\section*{Задача 27}
+
+\begin{equation*}
+\begin{tikzcd}
+& 0 \dar & 0 \dar & 0 \dar \\
+0 \rar & A_1 \rar \dar & B_1 \rar \dar & C_1 \rar \dar & 0 \\
+0 \rar & A_2 \rar \dar & B_2 \rar \dar & C_2 \rar \dar & 0 \\
+0 \rar & A_3 \rar \dar & B_3 \rar \dar & C_3 \rar \dar & 0 \\
+& 0 & 0 & 0
+\end{tikzcd}
+\end{equation*}
+
+Из точности 2-ой строки сразу следует, что у нас есть короткая точная последовательность комплексов 
+\begin{equation*}
+\begin{tikzcd}
+0 \rar & A_i \rar & B_i \rar & C_i \rar & 0
+\end{tikzcd}
+\end{equation*}
+
+А значит есть длинная точная последовательность
+\begin{equation*}
+\begin{tikzcd}
+0 \rar & H_1^1 \rar & H_2^1 \rar & H_3^1 \rar & H_1^2 \rar & H_2^2 \rar & H_3^2 \ar{lllld} \\
+& & H_1^3 \rar & H_2^3 \rar & H_3^3 \rar & 0
+\end{tikzcd}
+\end{equation*}
+
+$H_2^i = 0$ из точности второй строки. Отсюда, если все $H_1^i = 0$, то и $H_3^i = 0$, и наоборот.
 
 \end{document}
